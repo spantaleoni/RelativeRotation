@@ -13,6 +13,8 @@ from datetime import date, time, datetime, timedelta
 is_playing = False
 marker_size = []
 tail = 3
+#G_WINDOW = 30
+G_WINDOW = 30
 start_date, end_date = None, None
 
 for i in range(tail):
@@ -50,7 +52,7 @@ def get_color(x, y):
     
 # Retrieve historical prices 
 period = '1y'
-START = datetime.today() - timedelta(252)
+START = datetime.today() - timedelta(512)
 END = datetime.today()
 #tickers = ['FOO.PA', 'HLT.PA', 'TNO.PA', 'BNK.PA', 'PABZ.PA', 'AUT.PA']
 tickers = ['XLB', 'XLE', 'XLF', 'XLI', 'XLK', 'XLP', 'XLRE', 'XLU', 'XLV', 'XLY']
@@ -78,7 +80,7 @@ benchmark_data = yf.download(benchmark, start=START, end=END, interval="1d")['Ad
 
 stoxx = yf.download(benchmark, start=START, end=END, interval="1d")['Adj Close']
 
-window = 30
+window = G_WINDOW
 
 rs_tickers = []
 rsr_tickers = []
